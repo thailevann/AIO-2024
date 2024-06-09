@@ -1,28 +1,59 @@
-#caculate f1-score
-def exercise(tp, fp, fn):
-    if not type(tp) is int:
-        raise TypeError("tp must be int")
-    if not type(fp) is int:
-        raise TypeError("fp must be int")
-    if not type(fn) is int:
-        raise TypeError("fn must be int")
-    if tp == 0 or fp == 0 or fn == 0:
-        raise TypeError("tp and fp and fn must be greater than zero")
-    precision = tp/(tp+fp)
-    recall = tp/(tp+fn)
-    f1 = 2*(precision*recall/(precision+recall))
-    return precision, recall, f1
-if __name__== "__main__":
+# Approximations for Sin(x), Cos(x), Sinh(x), Cosh(x)
 
+def factorial(x):
+    fac = 1
+    for i in range(1, x + 1):
+        fac *= i
+    return fac
+
+def approx_sin(x, n):
+    approx = 0
+    for i in range(n):
+        term = ((-1) ** i) * (x ** (2 * i + 1)) / factorial(2 * i + 1)
+        approx += term
+    return approx
+
+def approx_cos(x, n):
+    approx = 0
+    for i in range(n):
+        term = ((-1) ** i) * (x ** (2 * i)) / factorial(2 * i)
+        approx += term
+    return approx
+
+def approx_sinh(x, n):
+    approx = 0
+    for i in range(n):
+        term = (x ** (2 * i + 1)) / factorial(2 * i + 1)
+        approx += term
+    return approx
+
+def approx_cosh(x, n):
+    approx = 0
+    for i in range(n):
+        term = (x ** (2 * i)) / factorial(2 * i)
+        approx += term
+    return approx
+
+def represents_int(s):
     try:
-        tp = 0
-        fp = 1
-        fn = 4
-        precision, recall, f1 = exercise(tp, fp, fn)
-        print(f"precision is {precision}")
-        print(f'recall is {recall}')
-        print(f'f1-score is {f1}')
-    except (TypeError, ValueError) as e:
-        print(e)
+        int(s)
+        return True
+    except ValueError:
+        return False
 
-
+if __name__ == "__main__":
+    x = input("Input x: ")
+    n = input("Input n: ")
+    
+    if represents_int(n):
+        n = int(n)
+        if n > 0:
+            x = float(x)
+            print(f'sin(x = {x}) ≈ {approx_sin(x, n)}')
+            print(f'cos(x = {x}) ≈ {approx_cos(x, n)}')
+            print(f'sinh(x = {x}) ≈ {approx_sinh(x, n)}')
+            print(f'cosh(x = {x}) ≈ {approx_cosh(x, n)}')
+        else:
+            print("n must be greater than zero")
+    else:
+        print("n must be an integer and greater than zero")
