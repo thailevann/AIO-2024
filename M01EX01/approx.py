@@ -8,28 +8,28 @@ def factorial(x):
 def approx_sin(x, n):
     approx = 0
     for i in range(n):
-        term = ((-1)**i) * (x**(2 * i + 1)) / factorial(2 * i + 1)
+        term = ((-1) ** i) * (x ** (2 * i + 1)) / factorial(2 * i + 1)
         approx += term
     return approx
 
 def approx_cos(x, n):
     approx = 0
     for i in range(n):
-        term = ((-1)**i) * (x**(2 * i)) / factorial(2 * i)
+        term = ((-1) ** i) * (x ** (2 * i)) / factorial(2 * i)
         approx += term
     return approx
 
 def approx_sinh(x, n):
     approx = 0
     for i in range(n):
-        term = (x**(2 * i + 1)) / factorial(2 * i + 1)
+        term = (x ** (2 * i + 1)) / factorial(2 * i + 1)
         approx += term
     return approx
 
 def approx_cosh(x, n):
     approx = 0
     for i in range(n):
-        term = (x**(2 * i)) / factorial(2 * i)
+        term = (x ** (2 * i)) / factorial(2 * i)
         approx += term
     return approx
 
