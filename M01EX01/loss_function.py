@@ -2,11 +2,11 @@
 import random
 import math
 
-def MAE(y_true, y_predict):
+def mae(y_true, y_predict):
     return abs(y_predict - y_true)
 
-def MSE(y_true, y_predict):
-    return (y_true - y_predict)**2
+def mse(y_true, y_predict):
+    return (y_true - y_predict) ** 2
 
 if __name__ == "__main__":
     n_sample = input("Input number of samples (integer number) to be generated: ")
@@ -15,8 +15,6 @@ if __name__ == "__main__":
         print("Number of samples must be an integer.")
     else:
         n_sample = int(n_sample)
-        predict_list = []
-        target_list = []
         loss_list = []
         loss_name_list = ["RMSE", "MSE", "MAE"]
 
@@ -29,10 +27,10 @@ if __name__ == "__main__":
                 predict = random.uniform(0, 10)
                 target = random.uniform(0, 10)
                 
-                if loss_name == "RMSE" or loss_name == "MSE":
-                    loss = MSE(target, predict)
+                if loss_name in ["RMSE", "MSE"]:
+                    loss = mse(target, predict)
                 elif loss_name == "MAE":
-                    loss = MAE(target, predict)
+                    loss = mae(target, predict)
                 
                 print(f"Loss name: {loss_name}, Sample: {i}, Pred: {predict:.2f}, Target: {target:.2f}")
                 print(f'Loss: {loss:.4f}')
