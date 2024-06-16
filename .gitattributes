@@ -1,0 +1,16 @@
+# Đặt kết thúc dòng thành LF cho tất cả các tệp văn bản
+*.txt text eol=lf
+
+# Đặt kết thúc dòng thành CRLF cho các tệp văn bản
+*.bat text eol=crlf
+
+# Không thay đổi kết thúc dòng của các tệp nhị phân
+*.jpg binary
+*.png binary
+*.gif binary
+
+# Thiết lập kết thúc dòng cho tất cả các tệp văn bản
+* text=auto
+
+# Đặt kết thúc dòng thành LF cho tệp JSON
+*.json text eol=lf
